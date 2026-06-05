@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <body style="background:#0a0a0a; color:white; font-family:sans-serif; padding:50px;">
-    <h1>EG STORE</h1>
+    <h1 style="color:#00ffcc;">EG STORE</h1>
     <div id="list"></div>
     <script>
         fetch('games.json').then(r => r.json()).then(data => {
             const list = document.getElementById('list');
             data.forEach(g => {
-                list.innerHTML += `<p>${g.name} - <a href="dowland/index.html?id=${g.id}">Detay/İndir</a></p>`;
+                list.innerHTML += `<p>${g.name} - <a href="dowland/index.html?id=${g.id}" style="color:white;">İndirme Sayfasına Git</a></p>`;
             });
         });
     </script>
