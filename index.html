@@ -1,32 +1,15 @@
 <!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>EG Store | EG Studios Official</title>
-    <style>
-        body { margin: 0; font-family: sans-serif; background: #0a0a0a; color: white; }
-        header { display: flex; justify-content: space-between; padding: 20px 50px; background: #1a1a1a; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: #00ffcc; }
-        .nav-btn { background: #00ffcc; color: #000; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; }
-        .hero { text-align: center; padding: 100px 20px; }
-        .game-card { border: 1px solid #333; padding: 20px; width: 300px; margin: 20px auto; border-radius: 10px; }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="logo">EG STORE</div>
-        <nav>
-            <a href="/dowland" class="nav-btn">İNDİR</a>
-        </nav>
-    </header>
-
-    <div class="hero">
-        <h1>EG Studios Official Vitrini</h1>
-        <div class="game-card">
-            <h3>ES SOCCER MANAGER 2026</h3>
-            <p>Sezonun en iyi menajerlik deneyimi.</p>
-            <a href="/dowland" style="color:#00ffcc">Hemen İndir</a>
-        </div>
-    </div>
+<html>
+<body style="background:#0a0a0a; color:white; font-family:sans-serif; padding:50px;">
+    <h1>EG STORE</h1>
+    <div id="list"></div>
+    <script>
+        fetch('games.json').then(r => r.json()).then(data => {
+            const list = document.getElementById('list');
+            data.forEach(g => {
+                list.innerHTML += `<p>${g.name} - <a href="dowland/index.html?id=${g.id}">Detay/İndir</a></p>`;
+            });
+        });
+    </script>
 </body>
 </html>
