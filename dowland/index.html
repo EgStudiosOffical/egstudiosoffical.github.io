@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><title>EG Store İndir</title></head>
+<body style="background:#0a0a0a; color:white; font-family:sans-serif; text-align:center; padding:50px;">
+    <div id="content">Yükleniyor...</div>
+    <script>
+        const id = new URLSearchParams(window.location.search).get('id');
+        fetch('../games.json').then(r => r.json()).then(data => {
+            const game = data.find(g => g.id === id);
+            if(game) {
+                document.getElementById('content').innerHTML = `
+                    <h1>${game.name}</h1>
+                    <p>Oyun Kodu: ${game.code}</p>
+                    <a href="${game.apk}" style="color:#00ffcc">APK İNDİR</a> | 
+                    <a href="${game.exe}" style="color:#00ffcc">EXE İNDİR</a>
+                `;
+            } else {
+                document.getElementById('content').innerHTML = "<h1>Oyun bulunamadı!</h1>";
+            }
+        });
+    </script>
+</body>
+</html>
